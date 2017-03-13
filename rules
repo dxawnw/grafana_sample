@@ -1,0 +1,3 @@
+## Insert prometheus alerting rules HERE
+## See docs for more information on promQL:
+## https://prometheus.io/docs/alerting/rules/
