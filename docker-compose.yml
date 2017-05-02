@@ -7,7 +7,7 @@ services:
         - ./rules:/etc/prometheus/rules
     command:
         - '-config.file=/etc/prometheus/prometheus.yml'
-        - '-alertmanager.url=INSERT_IP:9093/'
+        - '-alertmanager.url=http://192.168.99.100:9093/'
     ports:
         - '9090:9090'
   grafana:
@@ -16,7 +16,7 @@ services:
         - GF_SECURITY_ADMIN_USER=admin
         - GF_SECURITY_ADMIN_PASSWORD=pass
         - GF_DATABASE_TYPE=sqlite3
-        - GF_DATABASE_HOST=INSERT_IP:3000
+        - GF_DATABASE_HOST=192.168.99.100:3000
         - GF_DATABASE_PASSWORD=""
         - data=/var/lib/grafana
     depends_on:
@@ -24,7 +24,7 @@ services:
     ports:
         - "3000:3000"
   alertmanager:
-    image: prom/alertmanager:v0.5.1
+    image: prom/alertmanager:v0.6.0
     volumes:
         - ./alertmanager.yml:/alertmanager.yml
     command:
